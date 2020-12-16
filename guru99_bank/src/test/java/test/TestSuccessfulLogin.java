@@ -1,8 +1,8 @@
 package test;
 
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
-import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,28 +20,37 @@ public class TestSuccessfulLogin {
 	static final String BANK_URL = "http://demo.guru99.com/V4/";
 	static final String USER_ID = "mngr299698";
 	static final String PASSWORD = "epYpame";
+	static final String DRIVER_PATH = "/usr/local/bin";
 	static final String HEADLESS_ARG = "--headless";
 	
 	@BeforeTest
-	public void beforeTest() {
+	public void set_up() {
+		// Lightweight method to set up driver
 		WebDriverManager.chromedriver().setup();
-//		ChromeOptions chromeOptions = new ChromeOptions();
-//		chromeOptions.addArguments(HEADLESS_ARG);
-//		driver = new ChromeDriver(chromeOptions);
+		
+		// Legacy method to set up driver
+		// System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
 		driver = new ChromeDriver();
+		
+		// Headless browser option
+		// ChromeOptions chromeOptions = new ChromeOptions();
+		// chromeOptions.addArguments(HEADLESS_ARG); 
+		// driver = new ChromeDriver(chromeOptions);
+	
 		driver.get(BANK_URL);
 	}
 	
 	@Test
-	public void testSuccessfullLogin() {
+	public void test_successful_login() {
 		loginPage = new LoginPage(driver);
 		loginPage.loginToBank(USER_ID, PASSWORD);
+		
 		homePage = new HomePage(driver);
-		Assert.assertTrue(homePage.getDashboardUserID().toLowerCase().contains(USER_ID));
+		AssertJUnit.assertTrue(homePage.getDashboardUserID().toLowerCase().contains(USER_ID));
 	}
   
 	@AfterTest
-	public void afterTest() {
+	public void tear_down() {
 		driver.quit();
 	}
 

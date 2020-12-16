@@ -14,6 +14,9 @@ public class HomePage {
 	@FindBy (xpath="//table//tr[@class='heading3']/td")
 	WebElement userID;
 	
+	@FindBy (linkText="New Customer")
+	WebElement newCustomerButton;
+	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 15);
@@ -22,5 +25,9 @@ public class HomePage {
 	
 	public String getDashboardUserID() {
 		return userID.getText();
+	}
+	
+	public void clickNewCustomerButton() {
+		newCustomerButton.click();
 	}
 }
