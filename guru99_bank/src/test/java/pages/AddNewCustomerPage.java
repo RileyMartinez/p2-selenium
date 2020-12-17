@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AddNewCustomerPage {
 
@@ -39,7 +40,7 @@ public class AddNewCustomerPage {
 	By emailField = By.name("emailid");
 	
 	By passwordLabel = By.xpath("//table[@class='layout']//td[contains(text(), 'Password')]");
-	By passwordField = By.name("");
+	By passwordField = By.name("password");
 	
 	By submitButton = By.name("sub");
 	By resetButton = By.name("res");
@@ -56,8 +57,8 @@ public class AddNewCustomerPage {
 		return driver.findElement(customerNameLabel).getText();
 	}
 	
-	public boolean customerNameFieldIsEmpty() {
-		return driver.findElement(customerNameField).getAttribute("value").isEmpty();
+	public WebElement getCustomerNameField() {
+		return driver.findElement(customerNameField);
 	}
 	
 	public void setCustomerNameField(String name) {
@@ -68,8 +69,16 @@ public class AddNewCustomerPage {
 		return driver.findElement(genderLabel).getText();
 	}
 	
+	public WebElement getGenderMaleRadioBtn() {
+		return driver.findElement(genderMaleRadioBtn);
+	}
+	
 	public void clickGenderMaleRadioBtn() {
 		driver.findElement(genderMaleRadioBtn).click();
+	}
+	
+	public WebElement getGenderFemaleRadioBtn() {
+		return driver.findElement(genderFemaleRadioBtn);
 	}
 	
 	public void clickGenderFemaleRadioBtn() {
@@ -80,12 +89,20 @@ public class AddNewCustomerPage {
 		return driver.findElement(dobLabel).getText();
 	}
 	
+	public WebElement getDOBField() {
+		return driver.findElement(dobField);
+	}
+	
 	public void setDOBField(String dob) {
 		driver.findElement(dobField).sendKeys(dob);
 	}
 	
 	public String getAddressLabel() {
 		return driver.findElement(addressLabel).getText();
+	}
+	
+	public WebElement getAddressField() {
+		return driver.findElement(addressField);
 	}
 	
 	public void setAddressField(String address) {
@@ -96,12 +113,20 @@ public class AddNewCustomerPage {
 		return driver.findElement(cityLabel).getText();
 	}
 	
+	public WebElement getCityField() {
+		return driver.findElement(cityField);
+	}
+	
 	public void setCityField(String city) {
 		driver.findElement(cityField).sendKeys(city);
 	}
 	
 	public String getStateLabel() {
 		return driver.findElement(stateLabel).getText();
+	}
+	
+	public WebElement getStateField() {
+		return driver.findElement(stateField);
 	}
 	
 	public void setStateField(String state) {
@@ -112,12 +137,20 @@ public class AddNewCustomerPage {
 		return driver.findElement(pinLabel).getText();
 	}
 	
+	public WebElement getPINField() {
+		return driver.findElement(pinField);
+	}
+	
 	public void setPINField(String pin) {
 		driver.findElement(pinField).sendKeys(pin);
 	}
 	
 	public String getMobileNumberLabel() {
 		return driver.findElement(mobileNumberLabel).getText();
+	}
+	
+	public WebElement getMobileNumberField() {
+		return driver.findElement(mobileNumberField);
 	}
 	
 	public void setMobileNumberField(String mobileNumber) {
@@ -128,12 +161,20 @@ public class AddNewCustomerPage {
 		return driver.findElement(emailLabel).getText();
 	}
 	
+	public WebElement getEmailField() {
+		return driver.findElement(emailField);
+	}
+	
 	public void setEmailField(String email) {
 		driver.findElement(emailField).sendKeys(email);
 	}
 	
 	public String getPasswordLabel() {
 		return driver.findElement(passwordLabel).getText();
+	}
+	
+	public WebElement getPasswordField() {
+		return driver.findElement(passwordField);
 	}
 	
 	public void setPasswordField(String password) {

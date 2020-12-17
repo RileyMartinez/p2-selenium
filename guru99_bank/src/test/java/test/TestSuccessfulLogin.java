@@ -20,7 +20,7 @@ public class TestSuccessfulLogin {
 	static final String BANK_URL = "http://demo.guru99.com/V4/";
 	static final String USER_ID = "mngr299698";
 	static final String PASSWORD = "epYpame";
-	static final String DRIVER_PATH = "/usr/local/bin";
+	static final String DRIVER_PATH = "/usr/local/bin/chromedriver";
 	static final String HEADLESS_ARG = "--headless";
 	
 	@BeforeTest
