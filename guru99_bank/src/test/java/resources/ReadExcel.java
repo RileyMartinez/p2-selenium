@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
@@ -19,6 +17,10 @@ public class ReadExcel {
 	Sheet sheet;
 	DataFormatter df;
 	
+	/*
+	 * Sets up workbook after passing in file name. Xlsx file needs to be in the
+	 * same directory as this class.
+	 */
 	public ReadExcel(String fileName) throws IOException {
 		URL url = getClass().getResource(fileName);
 		File file = new File(url.getPath());
@@ -28,7 +30,7 @@ public class ReadExcel {
 		df = new DataFormatter();
 	}
 	
-	
+	// Returns a cell value as a string
 	public String getCell(int _row, int _cell) {
 		Row row = sheet.getRow(_row);
 		Cell cell = row.getCell(_cell);

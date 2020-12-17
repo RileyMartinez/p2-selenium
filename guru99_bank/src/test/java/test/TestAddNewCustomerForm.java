@@ -1,19 +1,14 @@
 package test;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
 import pages.AddNewCustomerPage;
 import pages.HomePage;
 import pages.LoginPage;
 import resources.ReadExcel;
-
 import org.testng.annotations.*;
-
+import static org.testng.Assert.*;
 import java.io.IOException;
-import java.util.Date;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -107,9 +102,9 @@ public class TestAddNewCustomerForm {
 		String customerNameLabel = addNewCustomerPage.getCustomerNameLabel();
 		String genderLabel = addNewCustomerPage.getGenderLabel();
 		
-		AssertJUnit.assertEquals(pageTitle, expPageTitle);
-		AssertJUnit.assertEquals(customerNameLabel, expCustomerNameLabel);
-		AssertJUnit.assertEquals(genderLabel, expGenderLabel);
+		assertEquals(pageTitle, expPageTitle);
+		assertEquals(customerNameLabel, expCustomerNameLabel);
+		assertEquals(genderLabel, expGenderLabel);
 		
 		
 	}
@@ -120,9 +115,9 @@ public class TestAddNewCustomerForm {
 		String addressLabel = addNewCustomerPage.getAddressLabel();
 		String cityLabel = addNewCustomerPage.getCityLabel();
 		
-		AssertJUnit.assertEquals(dobLabel, expDOBLabel);
-		AssertJUnit.assertEquals(addressLabel, expAddressLabel);
-		AssertJUnit.assertEquals(cityLabel, expCityLabel);
+		assertEquals(dobLabel, expDOBLabel);
+		assertEquals(addressLabel, expAddressLabel);
+		assertEquals(cityLabel, expCityLabel);
 	}
 	
 	@Test
@@ -131,9 +126,9 @@ public class TestAddNewCustomerForm {
 		String pinLabel = addNewCustomerPage.getPINLabel();
 		String mobileNumberLabel = addNewCustomerPage.getMobileNumberLabel();
 		
-		AssertJUnit.assertEquals(stateLabel, expStateLabel);
-		AssertJUnit.assertEquals(pinLabel, expPINLabel);
-		AssertJUnit.assertEquals(mobileNumberLabel, expMobileNumLabel);
+		assertEquals(stateLabel, expStateLabel);
+		assertEquals(pinLabel, expPINLabel);
+		assertEquals(mobileNumberLabel, expMobileNumLabel);
 	}
 	
 	@Test
@@ -141,8 +136,8 @@ public class TestAddNewCustomerForm {
 		String emailLabel = addNewCustomerPage.getEmailLabel();
 		String passwordLabel = addNewCustomerPage.getPasswordLabel();
 		
-		AssertJUnit.assertEquals(emailLabel, expEmailLabel);
-		AssertJUnit.assertEquals(passwordLabel, expPasswordLabel);
+		assertEquals(emailLabel, expEmailLabel);
+		assertEquals(passwordLabel, expPasswordLabel);
 	}
 	
 	@Test
@@ -163,16 +158,16 @@ public class TestAddNewCustomerForm {
 		addNewCustomerPage.setPasswordField(newPW);
 		addNewCustomerPage.clickResetButton();
 		
-		AssertJUnit.assertTrue(addNewCustomerPage.getCustomerNameField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getGenderMaleRadioBtn().isSelected());
-		AssertJUnit.assertTrue(addNewCustomerPage.getDOBField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getAddressField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getCityField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getStateField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getPINField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getMobileNumberField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getPasswordField().getAttribute("value").isEmpty());
-		AssertJUnit.assertTrue(addNewCustomerPage.getPasswordField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getCustomerNameField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getGenderMaleRadioBtn().isSelected());
+		assertTrue(addNewCustomerPage.getDOBField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getAddressField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getCityField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getStateField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getPINField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getMobileNumberField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getPasswordField().getAttribute("value").isEmpty());
+		assertTrue(addNewCustomerPage.getPasswordField().getAttribute("value").isEmpty());
 	}
 	  
 	

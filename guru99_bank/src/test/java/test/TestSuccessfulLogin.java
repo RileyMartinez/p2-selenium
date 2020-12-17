@@ -1,9 +1,9 @@
 package test;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
+import static org.testng.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -46,7 +46,7 @@ public class TestSuccessfulLogin {
 		loginPage.loginToBank(USER_ID, PASSWORD);
 		
 		homePage = new HomePage(driver);
-		AssertJUnit.assertTrue(homePage.getDashboardUserID().toLowerCase().contains(USER_ID));
+		assertTrue(homePage.getDashboardUserID().toLowerCase().contains(USER_ID));
 	}
   
 	@AfterTest

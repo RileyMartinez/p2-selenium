@@ -1,9 +1,9 @@
 package test;
 
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import static org.testng.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,7 +37,7 @@ public class TestLoginTitle {
 	@Test
 	public void test_correct_login_title() {
 		WebElement loginTitle = driver.findElement(By.className("barone"));
-		AssertJUnit.assertEquals(EXPECTED_TITLE, loginTitle.getText());
+		assertEquals(EXPECTED_TITLE, loginTitle.getText());
 		
 	}
 	
