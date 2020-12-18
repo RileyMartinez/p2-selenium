@@ -1,11 +1,7 @@
 package test;
 
-import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-//Basic script using JUnit
 public class TestLoginTitle {
 	
 	static final String URL = "http://demo.guru99.com/V4/";
@@ -23,7 +18,7 @@ public class TestLoginTitle {
 	
 	WebDriver driver;
 	
-	@BeforeMethod
+	@BeforeTest
 	public void setup() {
 		// Since I have geckodriver.exe installed in $PATH, I don't need to specify a the driver location.
 		// System.setProperty("webdriver.gecko.driver", DRIVER_PATH);
@@ -45,7 +40,7 @@ public class TestLoginTitle {
 		
 	}
 	
-	@AfterMethod
+	@AfterTest
 	public void teardown() {
 		driver.quit();
 	}

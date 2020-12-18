@@ -8,10 +8,11 @@ import pages.LoginPage;
 import resources.ReadExcel;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
-import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class TestAddNewCustomerForm {
 	
@@ -45,10 +46,10 @@ public class TestAddNewCustomerForm {
 	private String newPW;
 	
 	private static final String DATA_PATH = "test_data.xlsx";
-	private static final String HEADLESS_ARG = "--headless";
 	
 	@BeforeTest
-	public void setup() throws IOException {
+	@Parameters({"browser", "args"})
+	public void setup(@Optional("Chrome") String browser, @Optional("") String args) throws Exception {
 		// Initialize all test data from xlsx spreadsheet
 		ReadExcel readTestData = new ReadExcel(DATA_PATH);
 		username = readTestData.getCell(1, 0);
@@ -76,15 +77,31 @@ public class TestAddNewCustomerForm {
 		email = readTestData.getCell(10, 3);
 		newPW = readTestData.getCell(11, 3);
 		
-		
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		
-		// Headless browser option
-		// ChromeOptions chromeOptions = new ChromeOptions();
-		// chromeOptions.addArguments(HEADLESS_ARG); 
-		// driver = new ChromeDriver(chromeOptions);
-		
+		switch(browser.toLowerCase()) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				if (!args.isEmpty()) {
+					ChromeOptions chromeOptions = new ChromeOptions();
+					chromeOptions.addArguments(args);
+					driver = new ChromeDriver(chromeOptions);
+				} else {
+					driver = new ChromeDriver();
+				}
+				break;
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				if (!args.isEmpty()) {
+					FirefoxOptions firefoxOptions = new FirefoxOptions();
+					firefoxOptions.addArguments(args); 
+					driver = new FirefoxDriver(firefoxOptions);
+				} else {
+					driver = new FirefoxDriver();
+				}
+				break;
+			default:
+				throw new Exception("Incorrect parameter for browser, check testng.xml");	
+		}
+	
 		driver.get(bankURL);
 		
 		loginPage = new LoginPage(driver);
